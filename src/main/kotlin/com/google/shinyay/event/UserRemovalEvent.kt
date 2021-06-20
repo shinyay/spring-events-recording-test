@@ -1,8 +1,8 @@
 package com.google.shinyay.event
 
-class UserRemovalEvent (val username: String, val id: Long){
+class UserRemovalEvent (val username: String){
 
     override fun toString(): String {
-        return "UserRemovalEvent{ username=$username, id=$id }"
+        return "UserRemovalEvent{ username=$username }"
     }
 }
