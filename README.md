@@ -18,6 +18,8 @@ Your `Spring Event` extends `ApplicationEvent`
 class UserCreationEvent(source: Any?, val username: String, val id: Long) : ApplicationEvent(source!!)
 ```
 
+The `source` which is being passed to Super Class ,`ApplicationEvent`, should be the object on which the event occurred initially or an object with which the event is associated.
+
 ## Demo
 
 ## Features
