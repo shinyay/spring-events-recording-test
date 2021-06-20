@@ -3,11 +3,17 @@ package com.google.shinyay.listener
 import com.google.shinyay.event.UserCreationEvent
 import com.google.shinyay.event.UserRemovalEvent
 import com.google.shinyay.logger
+import org.springframework.context.ApplicationEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
 class UserEventingListener {
+
+    @EventListener
+    fun reportEvent(event: ApplicationEvent){
+        logger.info("Event Fired: $event")
+    }
 
     @EventListener(UserCreationEvent::class)
     fun reportUserCreation(event: UserCreationEvent) {
