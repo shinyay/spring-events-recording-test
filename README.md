@@ -11,6 +11,12 @@ There are a few simple guidelines to follow:
 - the publisher should inject an `ApplicationEventPublisher` object
 - the listener should implement the `ApplicationListener` interface
 ## Description
+### Creating an ApplicationEvent
+Your `Spring Event` extends `ApplicationEvent`
+
+```kotlin
+class UserCreationEvent(source: Any?, val username: String, val id: Long) : ApplicationEvent(source!!)
+```
 
 ## Demo
 
