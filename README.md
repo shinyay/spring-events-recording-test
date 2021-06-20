@@ -12,13 +12,25 @@ There are a few simple guidelines to follow:
 - the listener should implement the `ApplicationListener` interface
 ## Description
 ### Creating an ApplicationEvent
-Your `Spring Event` extends `ApplicationEvent`
+Our `Spring Event` extends `ApplicationEvent`
 
 ```kotlin
 class UserCreationEvent(source: Any?, val username: String, val id: Long) : ApplicationEvent(source!!)
 ```
 
 The `source` which is being passed to Super Class ,`ApplicationEvent`, should be the object on which the event occurred initially or an object with which the event is associated.
+
+### Publishing an ApplicationEvent
+We use the ApplicationEventPublisher interface to publish our events
+
+```kotlin
+@Service
+class UserService(val eventPublisher: ApplicationEventPublisher) {
+    fun createUser(userName: String) {
+        this.eventPublisher.publishEvent(UserCreationEvent(this, userName))
+    }
+}
+```
 
 ## Demo
 
