@@ -21,7 +21,7 @@ class UserCreationEvent(source: Any?, val username: String, val id: Long) : Appl
 The `source` which is being passed to Super Class ,`ApplicationEvent`, should be the object on which the event occurred initially or an object with which the event is associated.
 
 ### Publishing an ApplicationEvent
-We use the ApplicationEventPublisher interface to publish our events
+We use the `ApplicationEventPublisher` interface to publish our events
 
 ```kotlin
 @Service
@@ -31,6 +31,17 @@ class UserService(val eventPublisher: ApplicationEventPublisher) {
     }
 }
 ```
+
+### Listening to an Application Event
+We can use the `@EventListener` annotation to listen ApplicationEvent.
+
+```kotlin
+@EventListener(UserCreationEvent::class)
+fun reportUserCreation(event: UserCreationEvent) {
+    logger.info("New User Created: $event")
+}
+```
+
 
 ## Demo
 
