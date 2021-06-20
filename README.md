@@ -1,8 +1,12 @@
 # Getting Start with Spring Events
 
 Event handling in the `ApplicationContext` is provided through the `ApplicationEvent` class and the `ApplicationListener` interface.
-
 - [Standard and Custom Events](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events)
+
+There are a few simple guidelines to follow:
+- the event should extend `ApplicationEvent`
+- the publisher should inject an `ApplicationEventPublisher` object
+- the listener should implement the `ApplicationListener` interface
 ## Description
 
 ## Demo
