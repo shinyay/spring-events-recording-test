@@ -1,6 +1,7 @@
 package com.google.shinyay.service
 
 import com.google.shinyay.event.UserCreationEvent
+import com.google.shinyay.event.UserRemovalEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import java.util.concurrent.ThreadLocalRandom
@@ -22,5 +23,9 @@ class UserService(val eventPublisher: ApplicationEventPublisher) {
             ids.add(createUser(username!!))
         }
         return ids
+    }
+
+    fun removeUser(userName: String) {
+        this.eventPublisher.publishEvent(UserRemovalEvent(userName))
     }
 }
