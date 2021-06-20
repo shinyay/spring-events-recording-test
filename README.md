@@ -1,7 +1,8 @@
-# Name
+# Getting Start with Spring Events
 
-Overview
+Event handling in the `ApplicationContext` is provided through the `ApplicationEvent` class and the `ApplicationListener` interface.
 
+- [Standard and Custom Events](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events)
 ## Description
 
 ## Demo
