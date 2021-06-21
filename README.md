@@ -42,6 +42,11 @@ fun reportUserCreation(event: UserCreationEvent) {
 }
 ```
 
+`@EventListener` automatically registers an ApplicationListener.
+If you want to specify the specific event, you can put the class on the annotation:
+```kotlin
+@EventListener(UserCreationEvent::class)
+```
 
 ## Demo
 
