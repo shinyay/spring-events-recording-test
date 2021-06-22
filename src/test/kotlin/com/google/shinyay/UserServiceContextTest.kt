@@ -49,7 +49,7 @@ class UserServiceContextTest() {
 			?.count()
 		)
 			.isEqualTo(1)
-		applicationEvents?.stream()?.forEach(System.out::println)
+		applicationEvents?.stream(UserCreationEvent::class.java)?.forEach(System.out::println)
 	}
 
 }
