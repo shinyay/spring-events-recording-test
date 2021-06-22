@@ -57,6 +57,11 @@ To use ApplicationEvents in your tests, do the following:
 
 ApplicationEvents API allows you to process the events as a `java.util.Stream`.
 
+- `applicationEvents.stream()`
+  - All recorded events
+- `applicationEvents.stream(SomeEvent::class.java)`
+  - Only specific event
+
 ```kotlin
 @Autowired
 private val applicationEvents: ApplicationEvents? = null
