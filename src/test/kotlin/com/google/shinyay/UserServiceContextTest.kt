@@ -21,9 +21,6 @@ class UserServiceContextTest() {
 
 	@Test
 	fun createUserShouldPublishEvents() {
-
-
-
 		this.userService?.createUser("Alice")
 
 		assertEquals(1, applicationEvents
