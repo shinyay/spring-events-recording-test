@@ -74,4 +74,11 @@ class UserServiceContextTest() {
 		applicationEvents?.stream(UserCreationEvent::class.java)?.forEach(System.out::println)
 	}
 
+	@Test
+	fun batchCreateMultipleUsersShouldPublishEvents() {
+		val result = userService?.createUser(listOf("Alice","Bob","Carol","David"))
+
+		assertThat(result?.size).isEqualTo(4)
+		assertThat(applicationEvents?.stream(UserCreationEvent::class.java)?.count()).isEqualTo(4)
+	}
 }
