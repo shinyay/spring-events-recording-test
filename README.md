@@ -48,6 +48,9 @@ If you want to specify the specific event, you can put the class on the annotati
 @EventListener(UserCreationEvent::class)
 ```
 
+### Verifying Application Events
+- [Application Events](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#testcontext-application-events)
+
 ## Demo
 
 ## Features
