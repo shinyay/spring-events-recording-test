@@ -37,4 +37,19 @@ class UserServiceContextTest() {
 		applicationEvents?.stream()?.forEach(System.out::println)
 	}
 
+	@Test
+	fun createMultipleUsersShouldPublishEvents() {
+		this.userService?.createUser("Alice")
+		this.userService?.createUser("Bob")
+		this.userService?.createUser("Carol")
+
+		assertThat(applicationEvents
+			?.stream(UserCreationEvent::class.java)
+			?.filter { event -> event.username == "Alice" }
+			?.count()
+		)
+			.isEqualTo(1)
+		applicationEvents?.stream()?.forEach(System.out::println)
+	}
+
 }
