@@ -38,6 +38,21 @@ class UserServiceContextTest() {
 	}
 
 	@Test
+	fun createUsersShouldPublishEvents() {
+		this.userService?.createUser("Alice")
+		this.userService?.createUser("Alice")
+		this.userService?.createUser("Alice")
+
+		assertThat(applicationEvents
+			?.stream(UserCreationEvent::class.java)
+			?.filter { event -> event.username == "Alice" }
+			?.count()
+		)
+			.isEqualTo(3)
+		applicationEvents?.stream()?.forEach(System.out::println)
+	}
+
+	@Test
 	fun createMultipleUsersShouldPublishEvents() {
 		this.userService?.createUser("Alice")
 		this.userService?.createUser("Bob")
