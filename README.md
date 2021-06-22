@@ -57,6 +57,20 @@ To use ApplicationEvents in your tests, do the following:
 
 ApplicationEvents API allows you to process the events as a `java.util.Stream`.
 
+```kotlin
+@Autowired
+private val applicationEvents: ApplicationEvents? = null
+
+@Test
+fun eventTest() {
+    assertEquals(1, applicationEvents
+        ?.stream(UserCreationEvent::class.java)
+        ?.filter { event: UserCreationEvent -> event.username == "Alice" }
+        ?.count())
+    applicationEvents?.stream()?.forEach(System.out::println)
+}
+```
+
 ## Demo
 
 ## Features
