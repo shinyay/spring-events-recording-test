@@ -49,6 +49,28 @@ class UserServiceContextTest() {
 			?.count()
 		)
 			.isEqualTo(1)
+
+		assertThat(applicationEvents
+			?.stream(UserCreationEvent::class.java)
+			?.filter { event -> event.username == "Bob" }
+			?.count()
+		)
+			.isEqualTo(1)
+
+		assertThat(applicationEvents
+			?.stream(UserCreationEvent::class.java)
+			?.filter { event -> event.username == "Carol" }
+			?.count()
+		)
+			.isEqualTo(1)
+
+		assertThat(applicationEvents
+			?.stream(UserCreationEvent::class.java)
+			?.filter { event -> event.username == "David" }
+			?.count()
+		)
+			.isEqualTo(0)
+
 		applicationEvents?.stream(UserCreationEvent::class.java)?.forEach(System.out::println)
 	}
 
