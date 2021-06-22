@@ -2,6 +2,7 @@ package com.google.shinyay
 
 import com.google.shinyay.event.UserCreationEvent
 import com.google.shinyay.service.UserService
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,10 +24,16 @@ class UserServiceContextTest() {
 	fun createUserShouldPublishEvents() {
 		this.userService?.createUser("Alice")
 
-		assertEquals(1, applicationEvents
+		assertThat(applicationEvents
 			?.stream(UserCreationEvent::class.java)
-			?.filter { event: UserCreationEvent -> event.username == "Alice" }
-			?.count())
+			?.filter { event -> event.username == "Alice" }
+			?.count()
+		)
+			.isEqualTo(1)
+//		assertEquals(1, applicationEvents
+//			?.stream(UserCreationEvent::class.java)
+//			?.filter { event: UserCreationEvent -> event.username == "Alice" }
+//			?.count())
 		applicationEvents?.stream()?.forEach(System.out::println)
 	}
 
