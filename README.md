@@ -51,6 +51,10 @@ If you want to specify the specific event, you can put the class on the annotati
 ### Verifying Application Events
 - [Application Events](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#testcontext-application-events)
 
+To use ApplicationEvents in your tests, do the following:
+
+- The test class should be annotated with `@RecordApplicationEvents`
+
 ## Demo
 
 ## Features
