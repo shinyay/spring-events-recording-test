@@ -55,6 +55,8 @@ To use ApplicationEvents in your tests, do the following:
 
 - The test class should be annotated with `@RecordApplicationEvents`
 
+ApplicationEvents API allows you to process the events as a java.util.Stream.
+
 ## Demo
 
 ## Features
