@@ -77,6 +77,11 @@ fun eventTest() {
 }
 ```
 
+### Unit Testing with Mock (Mockito)
+**Mockito** is a java based mocking framework, used in conjunction with other testing frameworks such as JUnit.
+
+- [Mockito](https://site.mockito.org/)
+
 ## Demo
 
 ## Features
