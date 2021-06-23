@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.*
+import org.mockito.ArgumentMatchers.any
 import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.context.ApplicationEventPublisher
 
@@ -22,9 +23,17 @@ class UserServiceMockitUnitTest {
     private val userService: UserService? = null
 
     @Test
-    fun userCreationShouldPublishEvent() {
+    fun createUserShouldPublishEvent() {
         val result = userService!!.createUser("Alice")
         Mockito.verify(applicationEventPublisher)?.publishEvent(eventArgumentCaptor!!.capture())
         assertThat(eventArgumentCaptor?.value?.username).isEqualTo("Alice")
+    }
+
+    @Test
+    fun createMultipleUsersShouldPublishEvents() {
+        val result = userService!!.createUser(listOf<String>("Alice", "Bob", "Carol"))
+        Mockito
+            .verify(applicationEventPublisher, Mockito.times(3))
+            ?.publishEvent(any(UserCreationEvent::class.java))
     }
 }
