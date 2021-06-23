@@ -82,6 +82,15 @@ fun eventTest() {
 
 - [Mockito](https://site.mockito.org/)
 
+JUnit 5 (Jupiter) needs `@ExtendWith(MockitoExtension::class)` to use Mockito
+
+- `@Mock`
+  - create and inject **mocked instances** without having to call `Mockito.mock` manually
+- `@Captor`
+  - capture an argument passed to a method in order to inspect it
+- `@InjectMocks`
+  - inject mock fields into the tested object
+
 ## Demo
 
 ## Features
