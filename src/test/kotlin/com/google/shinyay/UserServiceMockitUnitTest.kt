@@ -23,24 +23,8 @@ class UserServiceMockitUnitTest {
 
     @Test
     fun userCreationShouldPublishEvent() {
-        val result = userService!!.createUser("duke")
+        val result = userService!!.createUser("Alice")
         Mockito.verify(applicationEventPublisher)?.publishEvent(eventArgumentCaptor!!.capture())
-        assertThat(eventArgumentCaptor?.value?.username).isEqualTo("Bob")
+        assertThat(eventArgumentCaptor?.value?.username).isEqualTo("Alice")
     }
-
-//    @InjectMocks
-//    private val userService: UserService? = null
-//
-//    @Mock
-//    private val applicationEventPublisher: ApplicationEventPublisher? = null
-//
-//    @Captor
-//    private val argumentCaptor: ArgumentCaptor<UserCreationEvent>? = null
-//
-//    @Test
-//    fun userCreationArgumentShouldBeCorrect() {
-//        val result = userService?.createUser("Alice")
-//        argumentCaptor?.capture()?.let { Mockito.verify(applicationEventPublisher)?.publishEvent(it) }
-//        Assertions.assertThat(argumentCaptor?.value?.username).isEqualTo("Bob")
-//    }
 }
